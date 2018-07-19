@@ -105,7 +105,7 @@ def self.first_student_in_grade_10
 
   DB[:conn].execute(sql).collect do |student|
     new_from_db(student)
-  end
+  end.first 
 end 
 
 
