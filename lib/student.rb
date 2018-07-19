@@ -105,13 +105,18 @@ def self.first_student_in_grade_10
 
   DB[:conn].execute(sql).collect do |student|
     new_from_db(student)
-  end.first 
+  end.first
 end
 
 def self.all_students_in_grade_X(x)
-  sql = <<-SQL 
+  sql = <<-SQL
   SELECT * FROM students WHERE students.grade = ?
-  SQL 
+  SQL
+
+  DB[:conn].execute(sql, x).collect do |student|
+    new_from_db(student)
+  end 
+end 
 
 
 end
