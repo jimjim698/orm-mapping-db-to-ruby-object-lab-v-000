@@ -76,14 +76,15 @@ class Student
       end
   end
 
-def self.all
-  sql = <<-SQL
-    SELECT * FROM students
-    SQL
+  def self.all
+    sql = <<-SQL
+      SELECT * FROM students
+      SQL
 
-    DB[:conn].execute(sql).collect do |student|
-      new_from_db(student)
-    end
+      DB[:conn].execute(sql).collect do |student|
+        new_from_db(student)
+      end
+    end 
 end
 
 
